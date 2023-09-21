@@ -1,20 +1,19 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
 
   "name": "Netflix Movie Reviews",
   "description": "This extension will show ratings from rotten tomatoes and imdb as well as show reviews from rotten tomatoes when they hover over a title on netflix.com.",
   "version": "1.0",
 
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "extension.html"
-  },
+  "host_permissions": [
+    "https://movie-data-lvj385cu6-technosapien.vercel.app/"
+  ],
 
   "content_scripts": [
     {
       "matches": ["https://www.netflix.com/*"],
 
-      "js": ["jquery-3.3.1.min.js", "script.js"]
+      "js": ["script.js"]
     }
   ]
 }
