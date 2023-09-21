@@ -5,9 +5,6 @@
   "description": "This extension will show ratings from rotten tomatoes and imdb as well as show reviews from rotten tomatoes when they hover over a title on netflix.com.",
   "version": "1.0",
 
-  "host_permissions": [
-    "https://movie-data-lvj385cu6-technosapien.vercel.app/"
-  ],
 
   "content_scripts": [
     {
