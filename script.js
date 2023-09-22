@@ -10,6 +10,16 @@ async function movieDataAPI(show){
     }
 }
 
+function createHitZone(score, hitzone) {
+    if (!hitzone.querySelector('.mediainsights-score')) {
+        var scoreElement = document.createElement('div');
+        scoreElement.className = 'mediainsights-score'; // Add a class for identification
+        scoreElement.innerHTML = '<h3>IMDB Score: ' + score + '</h3>';
+        scoreElement.style.position = 'absolute';
+        hitzone.appendChild(scoreElement);
+    }
+}
+
 function netflix(){
     var observer = new MutationObserver(function() {
         document.querySelectorAll('.slider-item').forEach(function(sliderItem) {
@@ -19,19 +29,12 @@ function netflix(){
                 sliderItem.addEventListener('mouseenter', async function() {
                     var show = sliderItem.querySelector('.title-card-container').firstChild.firstChild.firstChild.innerText;
                     var score = await movieDataAPI(show)
-
                     setTimeout(function() {
                         var hitzone = document.querySelector('.previewModal--wrapper');
                         hitzone = hitzone.firstChild.firstChild.lastChild.firstChild;
                         
-      
                         // Check if the score element already exists in the hitzone
-                        if (!hitzone.querySelector('.mediainsights-score')) {
-                            var scoreElement = document.createElement('div');
-                            scoreElement.className = 'mediainsights-score'; // Add a class for identification
-                            scoreElement.innerHTML = '<h3>IMDB Score: ' + score + '</h3>';
-                            hitzone.appendChild(scoreElement);
-                        }
+                        createHitZone(score, hitzone)
                     }, 400);
                 });
             }
@@ -59,15 +62,7 @@ function hboMax() {
       // Checking for shows name in show
       if (show) {
         var score = await movieDataAPI(show.innerText)
-        // div im appending to jXyNdo
-        if (!hitzone.querySelector('.mediainsights-score')) {
-            var scoreElement = document.createElement('div');
-            scoreElement.className = 'mediainsights-score'; // Add a class for identification
-            scoreElement.innerHTML = '<h3>IMDB Score: ' + score + '</h3>';
-            scoreElement.style.position = 'absolute';
-            hitzone.appendChild(scoreElement);
-            
-        }
+        createHitZone(score, hitzone)
       }
   });
 }
