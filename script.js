@@ -1,6 +1,6 @@
 async function movieDataAPI(show){
     try {
-        var response = await fetch("https://www.apedatalake.com/api/search?q=" + encodeURIComponent(show));
+        var response = await fetch("https://movies.apedatalake.com/api/search?q=" + encodeURIComponent(show));
         var data = await response.json(); // Await the reading of the response body
         // Update the score or any other logic based on the data
         score = data.imdb_rating || 'Not Found';
