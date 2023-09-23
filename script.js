@@ -78,8 +78,6 @@ function netflix() {
 }
 
 function hboMax() {
-  // Select the closest common parent of the target elements.
-  // For this example, I'm using the document, but you can use a closer parent if available.
   const parent = document;
 
   parent.addEventListener("mouseover", async function (event) {
