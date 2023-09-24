@@ -1,22 +1,17 @@
 async function movieDataAPI(show) {
   try {
     var response = await fetch(
-      "https://movie-data-a9dcjjcln-technosapien.vercel.app/api/search?q=" +
-        encodeURIComponent(show)
+      "https://movies.apedatalake.com/api/search?q=" + encodeURIComponent(show)
     );
     var data = await response.json(); // Await the reading of the response body
     // Update the score or any other logic based on the data
-    score = data.imdb_rating || "Not Found";
+    console.log(data);
+    score = data.vote_average || "Not Found";
     // console.log(data)
     return score;
   } catch (error) {
     console.error("Error fetching data:", error);
   }
-}
-
-function findAncestor(el, selector) {
-  while ((el = el.parentElement) && !el.matches(selector));
-  return el;
 }
 
 function createHitZone(score, hitzone) {
